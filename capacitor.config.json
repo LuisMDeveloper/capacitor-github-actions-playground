@@ -1,5 +1,5 @@
 {
-  "appId": "com.example.app",
+  "appId": "com.luismdev.capacitor-build-ga",
   "appName": "nextjs-tailwind-capacitor",
   "bundledWebRuntime": false,
   "npmClient": "npm",

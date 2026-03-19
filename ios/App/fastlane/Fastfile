@@ -1,0 +1,56 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Deploy build to TestFlight"
+  lane :deploy_to_testflight do
+    puts "Deploying to TestFlight..."
+    puts "APP_STORE_CONNECT_KEY_ID: #{ENV['APP_STORE_CONNECT_KEY_ID']}"
+    puts "APP_STORE_CONNECT_ISSUER_ID: #{ENV['APP_STORE_CONNECT_ISSUER_ID']}"
+    puts "APP_STORE_CONNECT_KEY_CONTENT: #{ENV['APP_STORE_CONNECT_KEY_CONTENT'] ? ENV['APP_STORE_CONNECT_KEY_CONTENT'].slice(0, 30) + '...' : 'nil'}"
+    # add actions here: https://docs.fastlane.tools/actions
+    # 1. Auth with App Store Connect API Key
+    api_key = app_store_connect_api_key(
+      key_id: ENV["APP_STORE_CONNECT_KEY_ID"].gsub("\x00", "").strip,
+      issuer_id: ENV["APP_STORE_CONNECT_ISSUER_ID"].gsub("\x00", "").strip,
+      key_content: ENV["APP_STORE_CONNECT_KEY_CONTENT"].gsub("\x00", "").strip,
+      is_key_content_base64: true
+    )
+
+    # 2. Match to sync provisioning profiles and certificates
+    setup_ci if is_ci
+    match(type: "appstore", api_key: api_key)
+
+    # 3. Increment build number
+    increment_build_number(xcodeproj: "App.xcodeproj")
+
+    # 4. Build the app
+    gym(
+      scheme: "App",
+      workspace: "App.xcworkspace",
+      output_directory: "./build",
+      output_name: "App.ipa",
+      export_method: "app-store"
+    )
+
+    # 5. Upload to TestFlight
+    upload_to_testflight(
+      api_key: api_key,
+      skip_waiting_for_build_processing: true
+    )
+  end
+end
