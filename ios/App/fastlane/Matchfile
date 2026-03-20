@@ -1,0 +1,9 @@
+# The URL of the git repository where the provisioning profiles and certificates will be stored
+git_url("https://github.com/LuisMDeveloper/capacitor-github-actions-playground-ios-certificates.git") 
+
+storage_mode("git")
+
+type("appstore")
+
+app_identifier(["com.luismdev.capacitor-build-ga.v1"]) # The bundle identifier of your app
+username("luis.manuel.ramirez.91@gmail.com") # Apple ID
