@@ -23,6 +23,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Deploy build to TestFlight
 
+### ios sync_certificates
+
+```sh
+[bundle exec] fastlane ios sync_certificates
+```
+
+Generate or update provisioning profiles and certificates
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

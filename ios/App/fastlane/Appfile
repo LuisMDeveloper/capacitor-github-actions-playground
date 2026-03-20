@@ -1,4 +1,4 @@
-app_identifier("com.luismdev.capacitor-build-ga") # The bundle identifier of your app
+app_identifier("com.luismdev.capacitor-build-ga.v1") # The bundle identifier of your app
 apple_id("luis.manuel.ramirez.91@gmail.com") # Your Apple Developer Portal username
 
 
