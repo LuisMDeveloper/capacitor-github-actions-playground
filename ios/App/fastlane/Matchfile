@@ -3,7 +3,7 @@ git_url(AppConfig::CERTIFICATES_REPO)
 
 storage_mode("git")
 
-type(AppConfig::MATCH_TYPE)
+type("appstore")
 
 app_identifier([ENV["APP_IDENTIFIER"]]) # The bundle identifier of your app
 username(ENV["APPLE_ID"]) # Apple ID

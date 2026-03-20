@@ -1,5 +1,4 @@
 module AppConfig
-  MATCH_TYPE        = "appstore"
   CERTIFICATES_REPO = "https://github.com/LuisMDeveloper/capacitor-github-actions-playground-ios-certificates.git"
   XCODE_PROJECT     = "App.xcodeproj"
   XCODE_WORKSPACE   = "App.xcworkspace"
@@ -46,7 +45,7 @@ platform :ios do
     api_key = get_api_key
 
     # 2. Match to sync provisioning profiles and certificates
-    match(type: AppConfig::MATCH_TYPE, api_key: api_key, readonly: true)
+    match(type: "appstore", api_key: api_key, readonly: true)
 
     # 3. Increment build number
     latest_build_number = latest_testflight_build_number(app_identifier: ENV["APP_IDENTIFIER"])
@@ -87,7 +86,7 @@ platform :ios do
 =end
 
     # 3. Match to sync provisioning profiles and certificates
-    match(type: AppConfig::MATCH_TYPE, api_key: api_key, readonly: false)
+    match(type: "appstore", api_key: api_key, readonly: false)
   end
 
 end
