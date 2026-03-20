@@ -1,5 +1,4 @@
 module AppConfig
-  CERTIFICATES_REPO = "https://github.com/LuisMDeveloper/capacitor-github-actions-playground-ios-certificates.git"
   XCODE_PROJECT     = "App.xcodeproj"
   XCODE_WORKSPACE   = "App.xcworkspace"
   XCODE_SCHEME      = "App"

@@ -1,5 +1,5 @@
 # The URL of the git repository where the provisioning profiles and certificates will be stored
-git_url(AppConfig::CERTIFICATES_REPO)
+git_url(ENV["CERTIFICATES_REPO"])
 
 storage_mode("git")
 
