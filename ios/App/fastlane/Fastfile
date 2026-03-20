@@ -1,3 +1,12 @@
+module AppConfig
+  MATCH_TYPE        = "appstore"
+  CERTIFICATES_REPO = "https://github.com/LuisMDeveloper/capacitor-github-actions-playground-ios-certificates.git"
+  XCODE_PROJECT     = "App.xcodeproj"
+  XCODE_WORKSPACE   = "App.xcworkspace"
+  XCODE_SCHEME      = "App"
+  IPA_NAME          = "App.ipa"
+end
+
 # This file contains the fastlane.tools configuration
 # You can find the documentation at https://docs.fastlane.tools
 #
@@ -40,7 +49,7 @@ platform :ios do
     match(type: AppConfig::MATCH_TYPE, api_key: api_key, readonly: true)
 
     # 3. Increment build number
-    latest_build_number = latest_testflight_build_number(app_identifier: AppConfig::APP_IDENTIFIER)
+    latest_build_number = latest_testflight_build_number(app_identifier: ENV["APP_IDENTIFIER"])
     increment_build_number(
       build_number: latest_build_number + 1,
       xcodeproj:    AppConfig::XCODE_PROJECT
@@ -69,10 +78,10 @@ platform :ios do
     # this step have issues with an account with 2FA enabled
 =begin
     produce(
-      app_identifier: AppConfig::APP_IDENTIFIER,
+      app_identifier: ENV["APP_IDENTIFIER"],
       app_name: "Capacitor Github Action",
       language: "English",
-      sku: AppConfig::APP_IDENTIFIER,
+      sku: ENV["APP_IDENTIFIER"],
       skip_itc: true, # Skip creating the app in App Store Connect, we just want to create the App ID in the Developer Portal
     )
 =end

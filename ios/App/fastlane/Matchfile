@@ -5,5 +5,5 @@ storage_mode("git")
 
 type(AppConfig::MATCH_TYPE)
 
-app_identifier([AppConfig::APP_IDENTIFIER]) # The bundle identifier of your app
-username(AppConfig::APPLE_ID) # Apple ID
+app_identifier([ENV["APP_IDENTIFIER"]]) # The bundle identifier of your app
+username(ENV["APPLE_ID"]) # Apple ID

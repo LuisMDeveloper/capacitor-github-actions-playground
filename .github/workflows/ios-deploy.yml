@@ -35,8 +35,10 @@ jobs:
       - name: Run Fastlane to TestFlight
         working-directory: ios/App
         env:
+          APP_IDENTIFIER: com.luismdev.capacitor-build-ga.v1
+          APPLE_ID: luis.manuel.ramirez.91@gmail.com
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_PAT }} 
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_PAT }}
           APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           APP_STORE_CONNECT_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           APP_STORE_CONNECT_KEY_CONTENT: ${{ secrets.ASC_PRIVATE_KEY }}
