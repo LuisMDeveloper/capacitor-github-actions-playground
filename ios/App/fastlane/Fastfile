@@ -44,7 +44,11 @@ platform :ios do
     )
 
     # 3. Increment build number
-    increment_build_number(xcodeproj: "App.xcodeproj")
+    latest_build_number = latest_testflight_build_number(app_identifier: "com.luismdev.capacitor-build-ga.v1")
+    increment_build_number(
+      build_number: latest_build_number + 1,
+      xcodeproj: "App.xcodeproj"
+    )
 
     # 4. Build the app
     gym(
