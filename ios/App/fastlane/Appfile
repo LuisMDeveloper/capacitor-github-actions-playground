@@ -1,5 +1,7 @@
-app_identifier("com.luismdev.capacitor-build-ga.v1") # The bundle identifier of your app
-apple_id("luis.manuel.ramirez.91@gmail.com") # Your Apple Developer Portal username
+require_relative 'config'
+
+app_identifier(AppConfig::APP_IDENTIFIER) # The bundle identifier of your app
+apple_id(AppConfig::APPLE_ID) # Your Apple Developer Portal username
 
 
 # For more information about the Appfile, see:
