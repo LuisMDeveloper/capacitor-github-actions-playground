@@ -56,8 +56,7 @@ platform :ios do
       workspace: "App.xcworkspace",
       output_directory: "./build",
       output_name: "App.ipa",
-      export_method: "app-store",
-      xcargs: "PROVISIONING_PROFILE_SPECIFIER='match AppStore com.luismdev.capacitor-build-ga.v1' CODE_SIGN_IDENTITY='Apple Distribution'"
+      export_method: "app-store"
     )
 
     # 5. Upload to TestFlight
