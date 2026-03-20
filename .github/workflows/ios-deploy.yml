@@ -41,3 +41,10 @@ jobs:
           APP_STORE_CONNECT_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           APP_STORE_CONNECT_KEY_CONTENT: ${{ secrets.ASC_PRIVATE_KEY }}
         run: bundle exec fastlane deploy_to_testflight
+        
+      - name: Upload gym logs on failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: fastlane-gym-logs
+          path: /Users/runner/Library/Logs/gym/App-App.log
